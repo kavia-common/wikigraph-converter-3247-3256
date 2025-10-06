@@ -1,16 +1,29 @@
 # flutter_frontend
 
-A new Flutter project.
+A Flutter app that will send a Wikipedia URL to a backend to convert it into a Neo4j graph.
 
-## Getting Started
+## Environment configuration
 
-This project is a starting point for a Flutter application.
+This app uses flutter_dotenv to configure the backend base URL.
 
-A few resources to get you started if this is your first Flutter project:
+1) Copy the example env file:
+   cp .env.example .env
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2) Set the backend URL:
+   BACKEND_BASE_URL=http://10.0.2.2:3001
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Notes:
+- Android emulator: use http://10.0.2.2:<port> to reach services running on your host machine (localhost on host).
+- iOS simulator: http://localhost:<port> usually works to reach host services.
+- Physical devices: set BACKEND_BASE_URL to an address reachable from the device (e.g., your machine’s LAN IP).
+
+## Running
+
+- After updating .env, run:
+  flutter pub get
+  flutter run
+
+## Troubleshooting
+
+- If you get backend connection errors, verify BACKEND_BASE_URL and that the backend is running and reachable.
+- Ensure the .env file is listed in pubspec.yaml assets (already configured).
